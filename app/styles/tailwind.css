@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* New component styles can go here */
+     /* New component styles can go here */
+
+  .stroke {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 0.5px;
+  }
+  .empty-cercle{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    line-height: 300px;
+    border: 2px solid rgb(180, 178, 178);
+    border-radius: 50%;
+    text-align: center !important;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+}
