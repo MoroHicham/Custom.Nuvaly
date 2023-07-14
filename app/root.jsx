@@ -3,14 +3,16 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
-  useLoaderData,
+  ScrollRestoration
 } from '@remix-run/react';
-import styles from './styles/app.css';
-import favicon from '../public/favicon.svg';
+
+import app from './styles/app.css';
+import MainLayout from './components/main.layout';
+import styles from './styles/tailwind-build.css';
 
 export const links = () => {
   return [
+    {rel: 'stylesheet', href: app},
     {rel: 'stylesheet', href: styles},
     {
       rel: 'preconnect',
@@ -19,21 +21,12 @@ export const links = () => {
     {
       rel: 'preconnect',
       href: 'https://shop.app',
-    },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    }
   ];
 };
 
-export async function loader({context}) {
-  const layout = await context.storefront.query(LAYOUT_QUERY);
-  return {layout};
-}
 
 export default function App() {
-  const data = useLoaderData();
-
-  const {name} = data.layout.shop;
-
   return (
     <html lang="en">
       <head>
@@ -43,9 +36,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Hello, {name}</h1>
-        <p>This is a custom storefront powered by Hydrogen</p>
-        <Outlet />
+        <MainLayout title={''}>
+          <Outlet />
+        </MainLayout>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -53,11 +46,3 @@ export default function App() {
   );
 }
 
-const LAYOUT_QUERY = `#graphql
-  query layout {
-    shop {
-      name
-      description
-    }
-  }
-`;
