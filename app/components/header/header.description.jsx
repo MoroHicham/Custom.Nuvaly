@@ -1,24 +1,53 @@
+import { useEffect } from 'react';
 export default function HeaderDescription() {
+
+    // Apply Header Script 
+    const resourceUrl = "https://cdn.shopify.com/s/files/1/0791/4215/8631/files/scripts.js?v=1689349316";
+    const resourceUrlCDN = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js";
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = resourceUrl;
+        document.body.appendChild(script);
+    });
+
     return (
-        <div className="flex flex-col pt-8 pl-64">
-            <div className="flex flex-row max-[750px]:justify-end min-[750px]:justify-end laptop:justify-around">
-                <p className="font-arial font-bold laptop:text-[100px] laptop:leading-[98px] max-[750px]:text-[45px] min-[750px]:text-[45px] max-[750px]:leading-[50px] min-[750px]:leading-[50px] text-[#7B7A7A] max-[750px]:pt-[45px] min-[750px]:pt-[45px] laptop:pr-80 relative max-[750px]:pr-7 min-[750px]:pr-7 tablet:mr-44 laptop:pt-[100px]">BEAUTI<span className="stroke laptop:pl-5 max-[750px]:pl-3 min-[750px]:pl-3">FUL</span><br /> SKIN IS<span className="stroke laptop:pl-9 max-[750px]:pl-4 min-[750px]:pl-4">THE</span><br />BEST&nbsp;&nbsp;&nbsp;&nbsp;<span className="stroke laptop:pl-5 max-[750px]:pl-1 min-[750px]:pl-1">JEWEL</span> </p>
-                <img className="laptop:h-[580px] laptop:ml-40 max-[750px]:h-[250px] min-[750px]:h-[250px] w-auto -z-10 absolute max-[750px]:pr-1 min-[750px]:pr-1 tablet:mr-44" src="https://cdn.shopify.com/s/files/1/0791/4215/8631/files/header_image_74a9e6fc-2a99-4bdf-bc4a-ffb26f75a74f.png?v=1689294616" alt="headerImage" />
+        <div>
+            <div className='header-image-section'>
+                <div className="header-left">
+                    <div className="header-row">
+                        <div className="header-row-center">
+                            <h3 className="header-row-title">This is sideways</h3>
+                        </div>
+                        <div className="header-row-bottom">
+                            <button className="button-down">
+                                <i className="fas fa-arrow-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="header-right">
+                    <div className="header-img-wrapper">
+                        <div className="header-title-wrapper">
+                           <p className="z-10 font-arial font-bold laptop:pl-[6em] laptop:text-[100px] laptop:leading-[98px] max-[750px]:text-[45px] min-[750px]:text-[45px] max-[750px]:leading-[50px] min-[750px]:leading-[50px] text-[#ffffff] max-[750px]:pt-[45px] min-[750px]:pt-[45px] max-[750px]:pl-[2em] min-[750px]:pl-[2em] laptop:pr-80 relative tablet:mr-44 laptop:pt-[0px]">BEAUTI<span className="stroke laptop:pl-5 max-[750px]:pl-3 min-[750px]:pl-3">FUL</span><br /> SKIN IS<span className="stroke laptop:pl-9 max-[750px]:pl-4 min-[750px]:pl-4">THE</span><br />BEST&nbsp;&nbsp;&nbsp;&nbsp;<span className="stroke laptop:pl-5 max-[750px]:pl-1 min-[750px]:pl-1">JEWEL</span> </p>
+                        </div>
+                        <div className="header-img-overlay"></div>
+                        <div className="player-button-wrapper">
+                            <a href='#' className='play-but'>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns: a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="213.7px" height="213.7px" viewBox="0 0 213.7 213.7" enableBackground="new 0 0 213.7 213.7" xmlSpace="preserve">
+                                    <polygon className='triangle' id="XMLID_18_" fill="none" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" points="
+	                                73.5,62.5 148.5,105.8 73.5,149.1 "/>
+                                    <circle className='circle' id="XMLID_17_" fill="none" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" cx="106.8" cy="106.8" r="103.3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="video-modal-wrapper">
+                <iframe className="video-modal" src="https://www.youtube.com/embed/_JbVCOZsN_8" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
         </div>
+        
     );
 }
 
-
-// Laptop Version
-/*export default function HeaderDescription() {
-    return (
-        <div className="flex flex-col pt-8">
-            <div className="flex flex-row justify-around flex-nowrap">
-                <p className="font-arial font-bold text-[100px] leading-[98px] text-[#7B7A7A] pt-[100px] relative pr-80">BEAUTI<span className="stroke pl-5">FUL</span><br /> SKIN IS<span className="stroke pl-9">THE</span><br />BEST&nbsp;&nbsp;&nbsp;&nbsp;<span className="stroke pl-5">JEWEL</span> </p>
-                <img className="h-[580px] w-auto -z-10 absolute ml-40" src="https://cdn.shopify.com/s/files/1/0791/4215/8631/files/header_image_74a9e6fc-2a99-4bdf-bc4a-ffb26f75a74f.png?v=1689294616" alt="headerImage" />
-            </div>
-        </div>
-    );
-}
-*/

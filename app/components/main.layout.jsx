@@ -90,6 +90,7 @@ export default function MainLayout({ children, title }) {
                     <CategorySection categoryName={'Sports & Loisirs'} Character={'S'} />
                     <CategorySection categoryName={'Beauté & Santé'} Character={'B'} />
                 </div>
+
                 <div className="border-t border-gray-950 max-[750px]:hidden"></div>
                 {/* Top Header Section - End */}
 
@@ -99,6 +100,7 @@ export default function MainLayout({ children, title }) {
                     <div className="laptop:text-[15px] max-[750px]:text-[8px] min-[750px]:text-[8px] transform origin-top-right -rotate-12 font-bold" style={circleStyle.ctrs}>/FEEL THE MOMENT</div>
                 </div>
                 {/* Main Header - End */}
+           
 
             </header>
             <main>
