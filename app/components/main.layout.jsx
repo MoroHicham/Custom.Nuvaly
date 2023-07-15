@@ -8,52 +8,7 @@ import HeaderDescription from "./header/header.description";
 
 // Basic main layout , this layout should be called from root.jsx
 export default function MainLayout({ children, title }) {
-    const [isMobile, setIsMobile] = useState(false);
 
-    useEffect(() => {
-      const checkScreenSize = () => {
-        const screenWidth = window.innerWidth;
-        setIsMobile(screenWidth < 768); // Adjust the breakpoint as per your needs
-      };
-  
-      // Check screen size on initial component mount
-      checkScreenSize();
-  
-      // Add event listener to recheck screen size on window resize
-      window.addEventListener('resize', checkScreenSize);
-  
-      // Clean up the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', checkScreenSize);
-      };
-    }, []);
-
-
-    // Css attributes declaration, initial width and height values.
-    const dynamicLaptopAndMobileVersion = {
-        mobileVersion : {
-            width: isMobile ? "100px" : "200px",
-            height: isMobile ? "100px" : "200px",
-            lineHeight: isMobile ? "20%" : "50%",
-        }
-    }
-
-    // Dynamic css class for Mobile and Laptop version
-    const circleStyle= {
-        ctrs : {
-             display: "flex",
-             width: dynamicLaptopAndMobileVersion.mobileVersion.width,
-             height: dynamicLaptopAndMobileVersion.mobileVersion.height,
-             lineHeight: dynamicLaptopAndMobileVersion.mobileVersion.lineHeight,
-             border: "2px solid rgb(180, 178, 178)",
-             borderRadius:"50%",
-             textAlign: "center !important",
-             verticalAlign: "middle",
-             justifyContent: "center",
-             alignItems: "center",
-             overflow: "visible"
-        }
-    }
 
 
     // Create a functional component that allows us to change the state of the menu bar in case of Mobile version.
@@ -74,8 +29,8 @@ export default function MainLayout({ children, title }) {
     }
 
     return (
-        <div className="">
-            <header className="flex flex-col space-y-1">
+        <div className="bg-[#ECECEC]">
+            <header className="flex flex-col space-y-1 bg-white">
 
                 {/* Top Header Section - Start */}
                 <AnnouncementBar />
@@ -96,18 +51,14 @@ export default function MainLayout({ children, title }) {
 
                 {/* Main Header - Start */}
                 <HeaderDescription />
-                <div className="pl-10 overflow-visible opacity-70">
-                    <div className="laptop:text-[15px] max-[750px]:text-[8px] min-[750px]:text-[8px] transform origin-top-right -rotate-12 font-bold" style={circleStyle.ctrs}>/FEEL THE MOMENT</div>
-                </div>
+                
                 {/* Main Header - End */}
-           
-
             </header>
             <main>
                 {children}
+              
             </main>
             <footer>
-
             </footer>
         </div>
     );
