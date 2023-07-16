@@ -4,6 +4,9 @@
 
 import { useEffect, useState } from "react";
 import OptionSection from "../components/content/options.section";
+import CardSection from "../components/content/card.section";
+import ProductList from "../components/content/product.list";
+
 export default function Index() {
     const [isMobile, setIsMobile] = useState(false);
 
@@ -65,12 +68,29 @@ export default function Index() {
                     <div className="laptop:text-[15px] max-[750px]:text-[8px] min-[750px]:text-[8px] transform origin-top-right -rotate-12 font-bold " style={circleStyle.ctrs}>/FEEL THE MOMENT</div>
             </div>
 
-            {/* Product Section - Start */}
-            <div className="flex flex-row flex-wrap justify-center bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5">
-           
-                {/* Current update */}
+            {/* Category Section - Start */}
+            <div className=" flex flex-row gap-1 justify-center  bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap">
+                <CardSection categoryName={'Sport & Loisirs'} imgName={'sport'} categoryStatus={'Énergie en mouvement'} categoryDescription={'Préparez-vous à vivre des moments d excitation, de dépassement de soi et de plaisir avec nos produits de sport et loisirs de qualité supérieure ! Que vous soyez un athlète passionné ou simplement à la recherche d une activité divertissante, notre vaste sélection saura répondre à tous vos besoins'} />
+                <CardSection categoryName={'Bébé & Jouets'} imgName={'games'} categoryStatus={'Joie ludique'} categoryDescription={'Découvrez un monde enchanté de jeux et de jouets qui feront briller les yeux de vos enfants ! Offrez-leur des moments de bonheur inoubliables et encouragez leur développement avec nos produits soigneusement conçus.'}/>
+                <CardSection categoryName={'Maison, Cuisine & Bureaux'} imgName={'house'} categoryStatus={'Confort domestique'} categoryDescription={'Découvrez notre gamme de produits de maison conçus pour apporter confort,style et fonctionnalité à votre espace de vie que vous cherchiez à rehausser votre intérieur ou à optimiser l organisation de votre maison nos produits sont là pour répondre à tous vos besoins.'}/>
+                <CardSection categoryName={'Beauté & Santé'} imgName={'beauty'} categoryStatus={'Ravivez votre éclat.'} categoryDescription={'Prenez soin de vous et révélez votre beauté naturelle avec nos produits de beauté et de santé de qualité exceptionnelle. Que vous cherchiez à rafraîchir votre routine de soins du visage, à sublimer votre maquillage ou à choyer votre corps, notre large gamme de produits répondra à toutes vos attentes. '}/>
             </div>
-            {/* Product Section - End */}
+            {/* Category Section - End */}
+
+
+            {/* Best Seller Section -  Start */}
+            <div className="flex flex-col justify-start bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-nowrap">
+                <ProductList />
+            </div>
+
+             {/* Best Seller Section - End */}
+
+
+            {/* Sport Category - Start  */}
+            <div className=" flex flex-row gap-1 justify-center  bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap">
+            
+            </div>
+            {/* Sport Category - End  */}
 
         </section>
     );
