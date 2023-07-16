@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 export default function HeaderDescription() {
 
     // Apply Header Script 
-    const resourceUrl = "https://cdn.shopify.com/s/files/1/0791/4215/8631/files/scripts.js?v=1689349316";
-    const resourceUrlCDN = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js";
+    const resourceUrl = "https://cdn.shopify.com/s/files/1/0791/4215/8631/files/scripts.js?v=1689446021";
     useEffect(() => {
         const script = document.createElement('script');
         script.src = resourceUrl;
