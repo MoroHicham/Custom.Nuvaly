@@ -6,6 +6,7 @@ import {
   ScrollRestoration
 } from '@remix-run/react';
 
+import {Seo} from '@shopify/hydrogen';
 import app from './styles/app.css';
 import MainLayout from './components/main.layout';
 import styles from './styles/tailwind-build.css';
@@ -25,6 +26,14 @@ export const links = () => {
   ];
 };
 
+const seo = ({data}) => ({
+  title: data?.collection?.title,
+  description: data?.collection?.description.substr(0, 154),
+});
+
+export const handle = {
+  seo,
+};
 
 export default function App() {
   return (
@@ -32,6 +41,7 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Seo />
         <Meta />
         <Links />
       </head>
