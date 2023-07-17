@@ -26,14 +26,7 @@ export const links = () => {
   ];
 };
 
-const seo = ({data}) => ({
-  title: data?.collection?.title,
-  description: data?.collection?.description.substr(0, 154),
-});
 
-export const handle = {
-  seo,
-};
 
 export default function App() {
   return (
