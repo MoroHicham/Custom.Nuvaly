@@ -1,18 +1,18 @@
 import { Link } from '@remix-run/react';
 import { Image, Money } from '@shopify/hydrogen';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product,index }) {
     const { price, compareAtPrice } = product.variants?.nodes[0] || {};
     const isDiscounted = compareAtPrice?.amount > price?.amount;
 
     return (
-        <Link to={`/products/${product.handle}`}>
-        <div className="relative m-10 flex w-[18rem] max-w-xs flex-col overflow-hidden rounded-lg border border-gray-50 bg-white shadow-md">
+        <div className={`relative m-10 ${index==0 ? 'ml-[2rem]' : 'ml-[-1.2rem] '} flex w-[16rem] max-w-xs flex-col overflow-hidden rounded-lg border border-gray-50 bg-white shadow-md`}>
+            <Link to={`/products/${product.handle}`}>
             <a className="relative mx-3 mt-3 flex h-50 overflow-hidden rounded-xl" href="#">
                 <img 
                 data={product.variants.nodes[0].image}
                 alt={product.title}
-                className="object-cover pl-20 w-40 h-44" src={product.variants.nodes[0].image.url} />
+                className="object-cover pl-14 w-auto h-44" src={product.variants.nodes[0].image.url} />
                 <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span>
             </a>
             <div className="mt-4 px-5 pb-5">
@@ -48,7 +48,7 @@ export default function ProductCard({ product }) {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>Add to cart</a>
             </div>
+            </Link>
         </div>
-        </Link>
     );
 }

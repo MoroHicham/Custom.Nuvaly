@@ -1,9 +1,10 @@
 import {Link} from '@remix-run/react';
 export default function CardSection({ collections }) {
     const categoryChar=['M','S','J','B'];
+    //console.log(collections);
     return (
         <>
-            {collections['nodes'].map((item, index) => (
+            {collections.map((item, index) => (
                 <Link  key={index} to={`/collections/${item.handle}`} className="group relative block bg-black w-[315px]">
                     <img
                         key={index}

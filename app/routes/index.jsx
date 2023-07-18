@@ -5,9 +5,8 @@
 import { useEffect, useState } from "react";
 import OptionSection from "../components/content/options.section";
 import CardSection from "../components/content/card.section";
-import ProductList from "../components/content/product.list";
 import {useLoaderData} from '@remix-run/react';
-
+import ProductGrid from "~/components/ProductGrid";
 
 export async function loader({context}) {
     return await context.storefront.query(COLLECTIONS_QUERY);
@@ -15,8 +14,9 @@ export async function loader({context}) {
 
 export default function Index() {
 
+    
     const {collections}=useLoaderData();
-   
+
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -38,6 +38,9 @@ export default function Index() {
     }, []);
 
 
+     // Pre-defined index handlers 
+    const indexHandlers=['maison-cuisine-bureaux','sport-loisirs','beaute-sante','bebe-jouets','meilleures-vente'];
+    
     // Css attributes declaration, initial width and height values.
     const dynamicLaptopAndMobileVersion = {
         mobileVersion: {
@@ -62,7 +65,7 @@ export default function Index() {
             overflow: "visible"
         }
     }
-
+    // console.log('**',collections.nodes.filter(item => item.image !== null));
     return (
         <section className="flex flex-col">
             {/* Option Section - Start  */}
@@ -74,20 +77,19 @@ export default function Index() {
             {/* Option Section - End  */}
 
             <div className="pl-2 opacity-70 absolute">
-                    <div className="laptop:text-[15px] max-[750px]:text-[8px] min-[750px]:text-[8px] transform origin-top-right -rotate-12 font-bold " style={circleStyle.ctrs}>/FEEL THE MOMENT</div>
+                <div className="laptop:text-[15px] max-[750px]:text-[8px] min-[750px]:text-[8px] transform origin-top-right -rotate-12 font-bold " style={circleStyle.ctrs}>/FEEL THE MOMENT</div>
             </div>
 
             {/* Category Section - Start */}
             <div className=" flex flex-row gap-1 justify-center bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap">
-                <CardSection collections={collections} />
+                <CardSection collections={collections.nodes.filter(item => item.image !== null)} />
             </div>
             {/* Category Section - End */}
 
             {/* Best Seller Section -  Start */}
             <div className="flex flex-col justify-start bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-nowrap">
-                <ProductList />
+                <ProductGrid collection={collections.nodes.filter(item => item.handle === 'meilleures-vente')} url={`/collections/${collections.nodes.filter(item => item.handle === 'meilleures-vente').handle}`}/>
             </div>
-
              {/* Best Seller Section - End */}
 
 
@@ -104,7 +106,7 @@ export default function Index() {
 
 const COLLECTIONS_QUERY = `#graphql
   query FeaturedCollections {
-    collections(first: 4, query: "collection_type:smart") {
+    collections(first: 5, query: "collection_type:smart") {
       nodes {
         id
         title
@@ -114,6 +116,33 @@ const COLLECTIONS_QUERY = `#graphql
             id
             url
           }
+        products(first: 8) {
+            nodes {
+                id
+                title
+                publishedAt
+                handle
+                variants(first: 1) {
+                    nodes {
+                        id
+                        image {
+                          url
+                          altText
+                          width
+                          height
+                        }
+                        price {
+                          amount
+                          currencyCode
+                        }
+                        compareAtPrice {
+                          amount
+                          currencyCode
+                        }
+                    }
+                }
+            }
+        }
       }
     }
   }

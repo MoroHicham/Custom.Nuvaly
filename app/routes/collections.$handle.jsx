@@ -50,7 +50,8 @@ export default function Collection() {
                     </div>
                 )}
             </header>
-            <ProductGrid collection={collection} url={`/collections/${collection.handle}`}/>
+            {/* Connvert collection to an array as expected from Product Grid to select the first item appeared by the handler Array(collection)  */}
+            <ProductGrid collection={Array(collection)} url={`/collections/${collection.handle}`}/>
         </>
     );
 }
