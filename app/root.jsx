@@ -6,6 +6,7 @@ import {
   ScrollRestoration
 } from '@remix-run/react';
 
+import { AppProvider } from '@shopify/polaris';
 import {Seo} from '@shopify/hydrogen';
 import app from './styles/app.css';
 import MainLayout from './components/main.layout';
@@ -39,11 +40,13 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <MainLayout title={''}>
+      <AppProvider>
+        <MainLayout title={'Nuvaly'}>
           <Outlet />
         </MainLayout>
         <ScrollRestoration />
         <Scripts />
+        </AppProvider>
       </body>
     </html>
   );
