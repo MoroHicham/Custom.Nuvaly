@@ -41,7 +41,10 @@ export default function HeaderLayout({title}) {
             <CategorySection categoryName={'Beauté & Santé'} Character={'B'} />
         </div>
 
+        {/* Seperator - start*/}
         <div className="border-t border-gray-950 max-[750px]:hidden"></div>
+        {/* Seperator - end*/}
+
         {/* Top Header Section - End */}
 
         {/* Main Header - Start */}

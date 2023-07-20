@@ -5,7 +5,7 @@ export default function CardSection({ collections }) {
     return (
         <>
             {collections.map((item, index) => (
-                <Link  key={index} to={`/collections/${item.handle}`} className="group relative block bg-black w-[315px]">
+                <Link  key={index} to={`/productList/${item.handle}`} className="group relative block bg-black w-[315px]">
                     <img
                         key={index}
                         src={item.image['url']}
