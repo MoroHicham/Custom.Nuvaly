@@ -54,7 +54,9 @@ export default function ProductList() {
 
     return (
         <div className="flex flex-col justify-center">
-            <div>{`Acceuil > Tous les produits`}</div>
+           
+            <div className="pt-3 font-bold text-gray-600">{`TOUS LES PRODUITS`}</div> 
+            
             <div className="flex flex-row gap-x-2 justify-center">
                 {/* Side Bar - Start  */}
                 { !isMobile ?
@@ -64,7 +66,7 @@ export default function ProductList() {
                  : null}
                 {/* Side Bar - End  */}
                 {/* Product List  - Start  */}
-                <div className=" flex flex-col gap-1 justify-center bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap basis-[75%]">
+                <div className={`flex flex-col gap-1 justify-center bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap ${ !isMobile ? 'basis-[75%]' : 'basis-[100%]' }`}>
                     <div className="flex flex-row justify-end">
                         <div className="p-2">
                             <div className="flex items-center mb-4">
@@ -91,7 +93,7 @@ export default function ProductList() {
                            onMouseLeave={handleMouseLeave}><ListBulletIcon className={`h-7 w-7 ${ !defaultColorSelect ? textColor : 'text-orange-600'}`} /></button> 
                         </div>
                     </div>
-                    { isMobile ?  <GridView /> : !isMobile && isGridView ? <GridView /> : <ListView /> }
+                    { isMobile ?  <GridView isMobile={true}/> : !isMobile && isGridView ? <GridView isMobile={false}/> : <ListView /> }
                 </div>
                 {/* Product List  - Start  */}
             </div>
