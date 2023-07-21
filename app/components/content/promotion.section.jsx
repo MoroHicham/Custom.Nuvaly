@@ -1,6 +1,6 @@
 export default function PromotionSection() {
     return (
-        <section className="overflow-hidden rounded-lg shadow-2xl md:grid md:grid-cols-3">
+        <section className="overflow-hidden rounded-lg shadow-2xl">
             <img
                 alt="Trainer"
                 src="https://images.unsplash.com/photo-1611510338559-2f463335092c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
