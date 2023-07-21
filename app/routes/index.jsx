@@ -4,9 +4,9 @@
 import {useLoaderData} from '@remix-run/react';
 import OptionSection from "../components/content/optionSection";
 import ProductScrollByCategory from '~/components/content/ProductScrollByCategory';
-import  useIsMobileHook from "../hooks/isMobileHook";
+import useIsMobileHook from "../hooks/isMobileHook";
 import CategoryCard from "../components/content/categoryCard";
-
+import CircledTitle from "../components/content/circledTitle";
 // Define Loader for data fetch 
 export async function loader({context}) {
     return await context.storefront.query(COLLECTIONS_QUERY);
@@ -59,9 +59,7 @@ export default function Index() {
             </div>
             {/* Option Section - End  */}
 
-            <div className="pl-2 opacity-70 absolute">
-                <div className="laptop:text-[15px] max-[750px]:text-[8px] min-[750px]:text-[8px] transform origin-top-right -rotate-12 font-bold " style={circleStyle.ctrs}>/FEEL THE MOMENT</div>
-            </div>
+            <CircledTitle     />
 
             {/* Category Section - Start */}
             <div className=" flex flex-row gap-1 justify-center bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap">
