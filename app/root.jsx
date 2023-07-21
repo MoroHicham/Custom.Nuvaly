@@ -12,6 +12,8 @@ import app from './styles/app.css';
 import MainLayout from './components/main.layout';
 import styles from './styles/tailwind-build.css';
 
+
+// Describes the css, javascript, icons links - start 
 export const links = () => {
   return [
     {rel: 'stylesheet', href: app},
@@ -26,8 +28,7 @@ export const links = () => {
     }
   ];
 };
-
-
+// Describes the css, javascript, icons links - end
 
 export default function App() {
   return (
@@ -41,9 +42,11 @@ export default function App() {
       </head>
       <body>
       <AppProvider>
+        {/* Entry Point - start */}
         <MainLayout title={'Nuvaly'}>
           <Outlet />
         </MainLayout>
+        {/* Entry Point - start */}
         <ScrollRestoration />
         <Scripts />
         </AppProvider>

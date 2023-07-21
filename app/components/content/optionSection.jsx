@@ -1,28 +1,11 @@
 import { TruckIcon } from "@heroicons/react/24/outline";
 import { ArchiveBoxArrowDownIcon } from "@heroicons/react/24/outline";
 import { MegaphoneIcon } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import useIsMobileHook from "~/hooks/isMobileHook";
 
 export default function OptionSection({ iconName, title, description, isBordered }) {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-      const checkScreenSize = () => {
-        const screenWidth = window.innerWidth;
-        setIsMobile(screenWidth < 768); // Adjust the breakpoint as per your needs
-      };
-  
-      // Check screen size on initial component mount
-      checkScreenSize();
-  
-      // Add event listener to recheck screen size on window resize
-      window.addEventListener('resize', checkScreenSize);
-  
-      // Clean up the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', checkScreenSize);
-      };
-    }, []);
+    
+    const {isMobile}=useIsMobileHook();
 
     const icons = {
         selectedIcon: {

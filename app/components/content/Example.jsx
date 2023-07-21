@@ -286,8 +286,6 @@ export default function Example({ isMobile }) {
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-
-
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {isMobile ? <GridView isMobile={true} /> : !isMobile && isGridView ? <GridView isMobile={false} /> : <ListView />}

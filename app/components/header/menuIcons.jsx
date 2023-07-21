@@ -1,6 +1,6 @@
-import { MagnifyingGlassIcon, UserIcon, ShoppingCartIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, UserIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
-export default function IconSection() {
+export default function MenuIcons() {
     return (
         <div className="flex flex-row items-center justify-center pr-5">
             <MagnifyingGlassIcon className="h-6 w-6 text-black max-[750px]:hidden" />

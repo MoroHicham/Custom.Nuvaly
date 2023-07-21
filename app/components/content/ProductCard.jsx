@@ -1,5 +1,4 @@
 import { Link } from '@remix-run/react';
-import { Image, Money } from '@shopify/hydrogen';
 
 export default function ProductCard({ product,index }) {
     const { price, compareAtPrice } = product.variants?.nodes[0] || {};

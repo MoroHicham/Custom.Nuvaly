@@ -1,36 +1,15 @@
-import BottomBar from "../components/content/bottomBar";
-import { useState, useCallback } from 'react';
-import { RectangleGroupIcon } from "@heroicons/react/24/outline";
-import { ListBulletIcon } from "@heroicons/react/24/outline";
-import ListView from "../components/content/ListView";
-import GridView from "../components/content/GridView";
-import { useEffect } from "react";
+import { useState } from 'react';
+import FixedBottomBar from "../components/content/fixedBottomBar";
 import Example from "../components/content/Example";
+import useIsMobileHook from "../hooks/isMobileHook";
+
 export default function ProductList() {
 
+    const {isMobile} = useIsMobileHook();
     const [isHovered, setIsHovered] = useState(false);
     const [selectedOption, setSelectedOption] = useState('Option 1');
     const [isGridView, setIsGridView] = useState(true);
 
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkScreenSize = () => {
-            const screenWidth = window.innerWidth;
-            setIsMobile(screenWidth < 768); // Adjust the breakpoint as per your needs
-        };
-
-        // Check screen size on initial component mount
-        checkScreenSize();
-
-        // Add event listener to recheck screen size on window resize
-        window.addEventListener('resize', checkScreenSize);
-
-        // Clean up the event listener on component unmount
-        return () => {
-            window.removeEventListener('resize', checkScreenSize);
-        };
-    }, []);
 
     const toggleView = () => {
         setIsGridView((prevIsGridView) => !prevIsGridView);
@@ -86,7 +65,7 @@ export default function ProductList() {
                 </div>
                 {/* Product List  - Start  */}
             </div>
-            <BottomBar />
+            <FixedBottomBar />
         </div>
     );
 }

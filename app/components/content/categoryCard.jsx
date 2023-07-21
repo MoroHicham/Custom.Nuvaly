@@ -1,5 +1,5 @@
 import {Link} from '@remix-run/react';
-export default function CardSection({ collections }) {
+export default function CategoryCard({ collections }) {
     const categoryChar=['M','S','J','B'];
     //console.log(collections);
     return (

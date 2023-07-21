@@ -1,43 +1,25 @@
 
 
-// Entry Point Index for Main Layout
-
-import { useEffect, useState } from "react";
-import OptionSection from "../components/content/options.section";
-import CardSection from "../components/content/card.section";
+// Entry Router Point Index for Main Layout
 import {useLoaderData} from '@remix-run/react';
-import ProductGrid from "~/components/ProductGrid";
+import OptionSection from "../components/content/optionSection";
+import ProductScrollByCategory from '~/components/content/ProductScrollByCategory';
+import  useIsMobileHook from "../hooks/isMobileHook";
+import CategoryCard from "../components/content/categoryCard";
 
+// Define Loader for data fetch 
 export async function loader({context}) {
     return await context.storefront.query(COLLECTIONS_QUERY);
 }
 
-export default function Index() {
 
+// Index Component 
+export default function Index() {
     
     const {collections}=useLoaderData();
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkScreenSize = () => {
-            const screenWidth = window.innerWidth;
-            setIsMobile(screenWidth < 768); // Adjust the breakpoint as per your needs
-        };
-
-        // Check screen size on initial component mount
-        checkScreenSize();
-
-        // Add event listener to recheck screen size on window resize
-        window.addEventListener('resize', checkScreenSize);
-
-        // Clean up the event listener on component unmount
-        return () => {
-            window.removeEventListener('resize', checkScreenSize);
-        };
-    }, []);
-
-
+    const { isMobile } = useIsMobileHook();
+    
+   
      // Pre-defined index handlers 
     const indexHandlers=['maison-cuisine-bureaux','sport-loisirs','beaute-sante','bebe-jouets','meilleures-vente'];
     
@@ -49,6 +31,7 @@ export default function Index() {
             lineHeight: isMobile ? "20%" : "50%",
         }
     }
+
     // Dynamic css class for Mobile and Laptop version
     const circleStyle = {
         ctrs: {
@@ -65,7 +48,7 @@ export default function Index() {
             overflow: "visible"
         }
     }
-    // console.log('**',collections.nodes.filter(item => item.image !== null));
+    
     return (
         <section className="flex flex-col">
             {/* Option Section - Start  */}
@@ -82,13 +65,13 @@ export default function Index() {
 
             {/* Category Section - Start */}
             <div className=" flex flex-row gap-1 justify-center bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-wrap">
-                <CardSection collections={collections.nodes.filter(item => item.image !== null)} />
+                <CategoryCard collections={collections.nodes.filter(item => item.image !== null)} /> 
             </div>
             {/* Category Section - End */}
 
             {/* Best Seller Section -  Start */}
             <div className="flex flex-col justify-start bg-white shadow shadow-lg shadow-bottom-gray-500 shadow-top-gray-500 mt-5 flex-nowrap">
-                <ProductGrid collection={collections.nodes.filter(item => item.handle === 'meilleures-vente')} url={`/collections/${collections.nodes.filter(item => item.handle === 'meilleures-vente').handle}`}/>
+                <ProductScrollByCategory collection={Array(collections.nodes.find(item => item.handle === 'meilleures-vente'))} url={`/collections/${collections.nodes.filter(item => item.handle === 'meilleures-vente').handle}`}/>
             </div>
              {/* Best Seller Section - End */}
 

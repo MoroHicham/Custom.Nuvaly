@@ -1,6 +1,6 @@
 import { useLoaderData } from '@remix-run/react';
 import { json } from '@shopify/remix-oxygen';
-import ProductGrid from '../components/ProductGrid';
+// import ProductScrollByCategory from "../components/ProductScrollByCategory";
 
 export async function loader({ params, context }) {
     const { handle } = params;
@@ -51,7 +51,7 @@ export default function Collection() {
                 )}
             </header>
             {/* Connvert collection to an array as expected from Product Grid to select the first item appeared by the handler Array(collection)  */}
-            <ProductGrid collection={Array(collection)} url={`/collections/${collection.handle}`}/>
+            {/* <ProductScrollByCategory collection={Array(collection)} url={`/collections/${collection.handle}`}/> */}
         </>
     );
 }

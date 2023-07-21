@@ -1,10 +1,13 @@
-import ProductCard from './ProductCard';
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import {Link} from '@remix-run/react';
-export default function ProductGrid({ collection, url }) {
+import ProductCard from './ProductCard';
+
+export default function ProductScrollByCategory({ collection, url }) {
+    
     return (
         <>
-         <Link  key={0} to={`/collections/${collection[0].handle}`}>
+        { collection[0]!==null ?
+         <Link  key={0} to={`/productList/${collection[0].handle}`}>
             <div className="flex flex-row justify-between flex-wrap pt-2 gap-3">
                 <div className="flex flex-row justify-start pl-[3.5rem] max-[750px]:pl-[1.5rem]">
                     <h1 className="underline underline-offset-8 font-normal laptop:text-[20px]"><span className="font-bold">TOP DEALS</span> | {collection[0].title.toUpperCase()}</h1>
@@ -23,6 +26,7 @@ export default function ProductGrid({ collection, url }) {
                 </section>
             </div>
             </Link>
+            : null }
         </>
     );
 }

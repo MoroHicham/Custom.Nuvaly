@@ -1,4 +1,4 @@
-export default function MainHeader() {
+export default function Logo() {
     return (
         <div className="flex flex-col text-left">
             <div>
