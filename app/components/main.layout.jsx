@@ -40,7 +40,6 @@ export default function MainLayout({ children, title }) {
                     <CategoryTitle categoryName={'Sports & Loisirs'} Character={'S'} />
                     <CategoryTitle categoryName={'Beauté & Santé'} Character={'B'} />
                 </div>
-                <div className="border-t border-gray-950 max-[750px]:hidden"></div>
                 <HeaderDescription />
             </header>
             {/* Header Section  - end */}
