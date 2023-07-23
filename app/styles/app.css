@@ -546,3 +546,9 @@ display: none;
 
 
 /* Scrolling Section Style - END */
+
+
+/* styles.css (or any other CSS file) */
+.image-container {
+  object-fit: cover; /* Scale the image to cover the container without distortion */
+}

@@ -1,11 +1,14 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, createContext } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-import GridView from "../content/GridView";
-import ListView from "../content/ListView";
+import GridView from "./GridView";
+import ListView from "./ListView";
 import { RectangleGroupIcon } from "@heroicons/react/24/outline";
 import { ListBulletIcon } from "@heroicons/react/24/outline";
+import NoFound from "../message/noFound";
+// Global as a context
+import GlobalContext from "~/containers/globalContext";
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -59,12 +62,21 @@ const filters = [
   },
 ]
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example({ isMobile }) {
+
+export default function ProductListView({ isMobile, productCollection }) {
+
+  // Define the state or data you want to pass through context
+  const [args2, setArgs2] = useState(productCollection);
+
+
+ // Replace the character you want to remove (e.g., "a") with an empty string
+ const removedCharString = args2.handle.replace(/-/g, ' ');
+ // Convert the first letter to uppercase
+ const handlePhrase = removedCharString.charAt(0).toUpperCase() + removedCharString.slice(1);
 
   const [isGridView, setIsGridView] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -189,6 +201,8 @@ export default function Example({ isMobile }) {
 
         <main className="">
           <div className="flex items-baseline justify-between border-b bg-white border-gray-200 pb-6 pt-0">
+
+            <div className='flex-row flex-wrap justify-center gap-2'>
             <span
               className="inline-flex items-center justify-center rounded-full bg-amber-600 px-2.5 py-0.5 text-white  ml-2 mt-2"
             >
@@ -209,12 +223,18 @@ export default function Example({ isMobile }) {
 
               <p className="whitespace-nowrap text-sm text-white">1502 Résultat</p>
             </span>
+            <span
+              className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700"
+            >
+              {handlePhrase}
+            </span>
+            </div>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    <span className='text-black'>Trier par : Les plus</span>
+                    <span className='text-black'>Trier par : Les plus demandés</span>
                     <ChevronDownIcon
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -288,12 +308,20 @@ export default function Example({ isMobile }) {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Product grid */}
               <div className="lg:col-span-3">
-                {isMobile ? <GridView isMobile={true} /> : !isMobile && isGridView ? <GridView isMobile={false} /> : <ListView />}
+                <GlobalContext.Provider value={{ args2 }}>
+                  { 
+                    args2.products.nodes.length>0 
+                    ? isMobile 
+                    ? <GridView isMobile={true} /> 
+                    : !isMobile && isGridView ? <GridView isMobile={false} /> 
+                    : <ListView /> 
+                    : <NoFound message={`Nous sommes désolés, mais nous n'avons trouvé aucun produit dans cette catégorie pour le moment. Veuillez vérifier ultérieurement ou explorez nos autres catégories pour trouver ce que vous cherchez. Si vous avez des questions, n'hésitez pas à nous contacter. Nous sommes là pour vous aider !`} /> }
+                </GlobalContext.Provider>
               </div>
             </div>
           </section>
         </main>
       </div>
     </div>
-  )
+  );
 }

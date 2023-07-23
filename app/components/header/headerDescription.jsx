@@ -7,7 +7,7 @@ export default function HeaderDescription() {
     const currentRoute = location.pathname;
     
     // Apply Header Script 
-    const resourceUrl = "https://cdn.shopify.com/s/files/1/0791/4215/8631/files/scripts.js?v=1689446021";
+    const resourceUrl = "https://cdn.shopify.com/s/files/1/0791/4215/8631/files/scripts.js?v=1690072136";
     useEffect(() => {
         const script = document.createElement('script');
         script.src = resourceUrl;
@@ -17,6 +17,7 @@ export default function HeaderDescription() {
     return (
         <>
             {currentRoute === '/' || currentRoute === '/index' ?
+            
                 <div>
                     <div className='header-image-section'>
                         <div className="header-left">
