@@ -135,11 +135,12 @@ export default function ProductListView({ isMobile, productCollection }) {
                 <GlobalContext.Provider value={{ args2 }}>
                   {
                     args2.products.nodes.length > 0
-                      ? isMobile
+                        ? isMobile
                         ? <GridView isMobile={true} />
                         : !isMobile && isGridView ? <GridView isMobile={false} />
-                          : <ListView />
-                      : <NoFound message={`Nous sommes désolés, mais nous n'avons trouvé aucun produit dans cette catégorie pour le moment. Veuillez vérifier ultérieurement ou explorez nos autres catégories pour trouver ce que vous cherchez. Si vous avez des questions, n'hésitez pas à nous contacter. Nous sommes là pour vous aider !`} />}
+                        : <ListView />
+                        : <NoFound message={`Nous sommes désolés, mais nous n'avons trouvé aucun produit dans cette catégorie pour le moment. Veuillez vérifier ultérieurement ou explorez nos autres catégories pour trouver ce que vous cherchez. Si vous avez des questions, n'hésitez pas à nous contacter. Nous sommes là pour vous aider !`} />
+                      }
                 </GlobalContext.Provider>
               </div>
             </div>
