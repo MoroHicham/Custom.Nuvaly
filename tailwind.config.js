@@ -2,6 +2,7 @@
 module.exports = {
     content: [
       "./app/**/*.{js,ts,jsx,tsx}",
+      "./node_modules/tw-elements-react/dist/js/**/*.js",
     ],
     theme: {
       fontFamily: {
@@ -28,6 +29,7 @@ module.exports = {
       },
     },
     plugins: [
+      require("tw-elements-react/dist/plugin.cjs"),
       require('@tailwindcss/forms')
     ],
 }
