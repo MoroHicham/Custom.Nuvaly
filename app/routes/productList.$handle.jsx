@@ -96,7 +96,7 @@ export default function ProductList() {
                 </div>
                 {/* Product List  - Start  */}
             </div>
-            <FixedBottomBar />
+            {/* <FixedBottomBar /> */}
         </div>
     );
 }
